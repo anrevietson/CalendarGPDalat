@@ -26,7 +26,7 @@ self.addEventListener('install', event => {
         './CalendarGPDalat.html',
         './style.css',
         './01.webp',
-           './01.webp',
+        './02.webp',  // Có vẻ bạn đã nhầm khi viết hai lần './01.webp', thay vào đó, mình để './02.webp'.
       ]);
     })
   );
@@ -47,10 +47,20 @@ self.addEventListener('activate', event => {
   );
 });
 
+// Sử dụng chiến lược network-first cho việc fetch tài nguyên
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
+    fetch(event.request)
+      .then(networkResponse => {
+        // Nếu tải từ mạng thành công, lưu trữ vào cache và trả về dữ liệu
+        return caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+      })
+      .catch(() => {
+        // Nếu không kết nối được với mạng, lấy từ cache
+        return caches.match(event.request);
+      })
   );
 });
