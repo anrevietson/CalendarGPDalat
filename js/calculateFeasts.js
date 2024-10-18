@@ -103,9 +103,7 @@ function addFeastend1(name, date) {
         addFeast("Thứ Bảy. Trái Tim Vô Nhiễm Đức Mẹ. Lễ nhớ.", new Date(easterDate.getTime() + 69 * 24 * 60 * 60 * 1000)); // Immaculate Heart of Mary
         addFeast("KÍNH TRỌNG THỂ CÁC THÁNH TỬ ĐẠO VIỆT NAM.", new Date(christTheKing.getTime() - 7 * 24 * 60 * 60 * 1000)); // One week before Christ the King
         addFeast("CHÚA KITÔ VUA VŨ TRỤ.", christTheKing);
-       // addFeast("CẦU CHO CÁC TÍN HỮU ĐÃ QUA ĐỜI.", new Date(year, 10 - 1, 2));
-       // addFeast("CUNG HIẾN THÁNH ĐƯỜNG LATÊRANÔ. Lễ kính.", new Date(year, 10, 9));
-
+   
         // Thêm các ngày lễ âm lịch vào mảng feasts
         const lunarNewYearArray = getSolarDate(1, 1, year); // Lấy mảng trả về (ngày, tháng)
         const lunarNewYear = new Date(year, lunarNewYearArray[1] - 1, lunarNewYearArray[0]); // Sử dụng ngày và tháng từ mảng, thêm năm
@@ -170,7 +168,7 @@ function addFeastend1(name, date) {
             ["5430", "MÌNH MÁU CHÚA KITÔ. Lễ trọng. Lễ cầu cho giáo dân (Lễ họ)."],
             ["5440", "Thứ Sáu. THÁNH TÂM CHÚA GIÊSU. Lễ trọng. ngày xin ơn thánh hóa các linh mục."],
             ["20401", "Mùa Giáng Sinh."], ["20501", "Mùa Giáng Sinh."], ["20601", "Mùa Giáng Sinh."], ["20701", "Mùa Giáng Sinh."],
-            ["2010", "CHÚA NHẬT THÁNH GIA CHÚA GIÊSU, ĐỨC MA-RI-A VÀ THÁNH GIUSE. Lễ trọng."],
+            ["2010", "THÁNH GIA CHÚA GIÊSU, ĐỨC MA-RI-A VÀ THÁNH GIUSE. Lễ trọng."],
             ["21712", "Phần II: Mùa Vọng ngày 17 /12."], ["21812", "Mùa Vọng ngày 18 /12."], ["21912", "Mùa Vọng ngày 19 /12."],
             ["22012", "Mùa Vọng ngày 20 /12."], ["22212", "Mùa Vọng ngày 22 /12."], ["22412", "Mùa Vọng ngày 24 /12."],
             ["22512", "CHÚA GIÁNG SINH. Lễ trọng với tuần bát nhật. Lễ buộc. Lễ cầu cho giáo dân (Lễ họ)."],
@@ -187,6 +185,7 @@ function addFeastend1(name, date) {
             ["70211", "CẦU CHO CÁC TÍN HỮU ĐÃ QUA ĐỜI."],
             ["70911", "CUNG HIẾN THÁNH ĐƯỜNG LATÊRANÔ. Lễ kính."],
             ["70202", "DÂNG CHÚA GIÊSU TRONG ĐỀN THÁNH (Lễ Nến). Lễ kính."],
+            ["71312", "KỶ NIỆM CUNG HIẾN THÁNH ĐƯỜNG GIÁO XỨ. Lễ trọng."],
         ]);
 
    

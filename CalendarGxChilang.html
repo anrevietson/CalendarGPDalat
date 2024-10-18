@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lịch Công Giáo</title>
-    <link rel="manifest" href="/lichGPDalat/manifest.json">
+    <link rel="manifest" href="/CalendarGxChilang/manifest.json">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
       <meta name="theme-color" content="#2196f3">
       <link rel="stylesheet" href="style.css">
@@ -31,6 +31,8 @@
     <script src="js/secondfeast.js"></script>
     <script src="js/calculateOptionbibleReads.js"></script>
     <script src="js/calculateEucharisticAdoration.js"></script>
+    <script src="js/Optionfeast.js"></script>
+    <script src="js/calculateWeeks.js"></script>
 </head>
 
 <body>
@@ -578,6 +580,8 @@ function displayDateInfo(date) {
                         });
                     }
                 }
+
+
             }
         } else {
             document.getElementById("optional-reading").textContent = ''; // Xóa thông tin bài đọc phụ nếu không có giá trị
@@ -589,8 +593,6 @@ function displayDateInfo(date) {
 window.onload = function() {
     displayDateInfo();
 };
-
-
 
 // Hàm cập nhật thông tin khi chọn ngày từ input
 function getFeastForSelectedDate() {
@@ -626,11 +628,13 @@ function displayWeekInfo(weekType) {
     const feasts = calculateFeasts(year); // Lấy các lễ trong năm
     const secondFeasts = calculateSecondFeasts(year); // Lấy các lễ vọng
 
+    const giaoKhu = processDate(startOfWeek); 
+   
     // Cập nhật hiển thị thông tin tuần
     const yearDisplayElement = document.getElementById('yearDisplay');
     const startDateString = `${startOfWeek.getDate()}/${startOfWeek.getMonth() + 1}/${startOfWeek.getFullYear()}`;
     const endDateString = `${endOfWeek.getDate()}/${endOfWeek.getMonth() + 1}/${endOfWeek.getFullYear()}`;
-    yearDisplayElement.textContent = `từ ngày ${startDateString} đến ${endDateString}`;
+    yearDisplayElement.textContent = `từ ngày ${startDateString} đến ${endDateString} (Giáo khu: ${giaoKhu})`;
 
     const reportTableBody = document.getElementById('reportTableBody');
     reportTableBody.innerHTML = ''; // Xóa dữ liệu cũ trong bảng
@@ -701,37 +705,38 @@ function displayWeekInfo(weekType) {
                     }
                 }
 
-        // Tính toán và thêm lễ vọng (second feast)
-       // const secondFeast = getSecondFeastsForDate(currentDay, secondFeasts);
-        if (secondFeast) {
-            feastAndReadingContent += '<br>' + formatFeastName(secondFeast.name) + '<br>';
-        }
+                // Tính toán và thêm lễ vọng (second feast)       
+                if (secondFeast) {
+                    feastAndReadingContent += '<br><strong>' + formatFeastName(secondFeast.name) + '</strong><br>';
+                }
 
-       
+                 // Thêm bài đọc phụ vào sau phần ngày lễ             
 
-        // Thêm bài đọc phụ vào sau phần ngày lễ
-       // const reading1 = showOptionContent(currentDay); // Gọi hàm showOptionContent để lấy tên bài đọc
-        
-
-        if (reading1 && reading1 !== "1") {
-            if(secondFeast){
-            feastAndReadingContent += `
-                <div class="readable" onclick="showBibleOptionContent('${currentDay.toISOString()}')">
-                    ${reading1}
-                </div>
-            `;
-    
-        }
-        }
-                        //console.log("ngày truyền vào:", currentDate);  // Kiểm tra currentDate có hợp lệ không
-                        feastAndReadingContent += `
-                                <div class="EucharisticAdoration">
-                                    ${window.calculateEucharisticAdoration.getEucharisticAdorationContent(currentDay)}
-                                </div>
-                            `;
-     
-
-
+                if (reading1 && reading1 !== "1") {
+                    if(secondFeast){
+                    feastAndReadingContent += `
+                        <div class="readable" onclick="showBibleOptionContent('${currentDay.toISOString()}')">
+                            ${reading1}
+                        </div>
+                    `;
+            
+                    }
+                }               
+                        
+            //Những ngày lễ riêng
+            const optionFeasts = calculateOptionFeasts(currentDay);
+                feastAndReadingContent += `
+                    <div class="Optionfeats">
+                        ${optionFeasts.map(feast => `${feast.name}`).join('')}
+                    </div>
+                `;
+            //Chầu thánh Thể
+                feastAndReadingContent += `
+                    <div class="EucharisticAdoration">
+                        ${window.calculateEucharisticAdoration.getEucharisticAdorationContent(currentDay)}
+                    </div>
+                `;   
+              
         // Tạo hàng mới trong bảng
         const row = document.createElement('tr');
 
@@ -771,7 +776,7 @@ function displayWeekInfo(weekType) {
     }
 
 }
-// Hàm để lấy tháng và năm từ modal trên mobile và cập nhật cho displayMonthInfo()
+
 
 // Hàm dành cho mobile
 function displayMonthInfoMobile() {
@@ -789,8 +794,7 @@ function displayMonthInfoMobile() {
 }
 
 function displayMonthInfo() {
-    // Lấy tháng và năm từ input của người dùng
-   
+       
     const month = parseInt(document.getElementById('monthInput').value);
     const year = parseInt(document.getElementById('yearInput').value);
 
@@ -805,20 +809,16 @@ function displayMonth(month, year) {
     const feasts = calculateFeasts(year);
     const secondFeasts = calculateSecondFeasts(year); // Lấy các lễ vọng (nếu có)
 
-     // Mùa Phụng Vụ:
+        // Mùa Phụng Vụ:
+        let liturgicalYear = getLiturgicalYear(year);
+     
+        if (month === 12) {                   
+                liturgicalYear = getLiturgicalYear(year + 1);
+        }
 
-     let liturgicalYear = getLiturgicalYear(year);
-
-// chưa hoàn thành hàm này????
-if (month === 12) {
-    console.log(month);
-    
-        liturgicalYear = getLiturgicalYear(year + 1);
- }
-
-// Cập nhật nội dung của thẻ <span id="yearDisplay"> để hiển thị tháng, năm và năm phụng vụ
-const yearDisplayElement = document.getElementById('yearDisplay');
-yearDisplayElement.textContent = `Tháng ${month} - Năm ${year} : (${liturgicalYear})`;
+        // Cập nhật nội dung của thẻ <span id="yearDisplay"> để hiển thị tháng, năm và năm phụng vụ
+        const yearDisplayElement = document.getElementById('yearDisplay');
+        yearDisplayElement.textContent = `Tháng ${month} - Năm ${year} : (${liturgicalYear})`;
 
 
     // Lấy phần body của bảng để thêm nội dung vào
@@ -870,6 +870,7 @@ yearDisplayElement.textContent = `Tháng ${month} - Năm ${year} : (${liturgical
             // Tính toán và thêm lễ vọng (second feast)
             const secondFeast = getSecondFeastsForDate(currentDate, secondFeasts);
 
+           
 
             // Kiểm tra xem có phải ngày 25/12 hay không (ưu tiên xử lý trước)
             if (isSameDay(currentDate, Dec25)) {
@@ -906,8 +907,9 @@ yearDisplayElement.textContent = `Tháng ${month} - Năm ${year} : (${liturgical
 
 
             if (secondFeast) {
-                feastAndReadingContent += '<br>' + formatFeastName(secondFeast.name) + '<br>';
+            feastAndReadingContent += '<br><strong>' + formatFeastName(secondFeast.name) + '</strong><br>';
             }
+
 
             // Thêm bài đọc phụ vào sau phần ngày lễ
             
@@ -920,15 +922,20 @@ yearDisplayElement.textContent = `Tháng ${month} - Năm ${year} : (${liturgical
                     `;
                 }
             }
-            
-            //console.log("ngày truyền vào:", currentDate);  // Kiểm tra currentDate có hợp lệ không
-            feastAndReadingContent += `
-                <div class="EucharisticAdoration">
-                    ${window.calculateEucharisticAdoration.getEucharisticAdorationContent(currentDate)}
-                </div>
-            `;
-
-
+                      
+             //Những ngày lễ riêng
+              const optionFeasts = calculateOptionFeasts(currentDate);
+                  feastAndReadingContent += `
+                        <div class="Optionfeats">
+                            ${optionFeasts.map(feast => `${feast.name}`).join('')}
+                        </div>
+                    `;
+            // Phiên Chầu thánh thể
+                feastAndReadingContent += `
+                        <div class="EucharisticAdoration">
+                            ${window.calculateEucharisticAdoration.getEucharisticAdorationContent(currentDate)}
+                        </div>
+                    `;      
 
         // Ngày dương lịch và âm lịch được hiển thị trong cùng một ô
         const solarDateCell = document.createElement('td');
@@ -947,7 +954,6 @@ yearDisplayElement.textContent = `Tháng ${month} - Năm ${year} : (${liturgical
         const feastAndReadingCell = document.createElement('td');
         feastAndReadingCell.innerHTML = updateFeastAndReadingContent(currentDate, feastAndReadingContent);
         row.appendChild(feastAndReadingCell);
-
 
         // Nếu là Chủ Nhật, thêm hiệu ứng 3D
         if (currentDate.getDay() === 0) {
@@ -1018,104 +1024,103 @@ function isSameDay(date1, date2) {
         `;
     }
       
-      // Các Hàm liên quan bài đọc chính
-        function showReadingContent(dateString) {
-            const date = new Date(dateString);  // Chuyển đổi chuỗi thành đối tượng Date
-            const reading = getBibleByFourDigitCode(date);  // Lấy bài đọc
-            const year = date.getFullYear();
-            const feasts = calculateFeasts(year); // Lấy danh sách lễ
-            updateModalTitle(date, feasts); // Cập nhật tiêu đề modal
-            if (reading) {
-                // Biến lưu trữ nội dung bài đọc với các điều kiện kiểm tra từng phần
-                const readingContent = `
-                    ${formatReadingPart('Bài Đọc I', reading.firstReading)}
-                    ${formatPsalms(reading.psalms)}
-                    ${reading.secondReading ? formatReadingPart('Bài Đọc II', reading.secondReading) : ''} 
-                    ${formatAlleluia(reading.alleluia)}
-                    ${formatReadingPart('Tin Mừng', reading.gospel)}
-                    `;
-                     if (reading) {
-                    // Cập nhật nội dung cho Bài Đọc I
-                    const reading01Element = document.getElementById("reading01");
-                    if (reading01Element) {
-                        reading01Element.innerHTML = formatReadingPart('Bài Đọc I', reading.firstReading);
-                        reading01Element.classList.add("show"); // Hiển thị Bài Đọc I khi có nội dung
-                    }
-
-                    // Cập nhật nội dung cho Thánh Vịnh nếu có
-                    const psalmElement = document.getElementById("psalm01");
-                    if (psalmElement) {
-                        psalmElement.innerHTML = formatPsalms(reading.psalms);
-                        if (reading.psalms) {
-                            psalmElement.classList.add("show");
-                        } else {
-                            psalmElement.classList.remove("show");
-                        }
-                    }
-
-                    // Cập nhật nội dung cho Bài Đọc II nếu có
-                    const reading02Element = document.getElementById("reading02");
-                    if (reading02Element) {
-                        reading02Element.innerHTML = reading.secondReading ? formatReadingPart('Bài Đọc II', reading.secondReading) : "";
-                        if (reading.secondReading) {
-                            reading02Element.classList.add("show");
-                        } else {
-                            reading02Element.classList.remove("show");
-                        }
-                    }
-
-                    // Cập nhật nội dung cho Alleluia nếu có
-                    const alleluiaElement = document.getElementById("alleluia01");
-                    if (alleluiaElement) {
-                        alleluiaElement.innerHTML = reading.alleluia ? formatAlleluia(reading.alleluia) : "";
-                        if (reading.alleluia) {
-                            alleluiaElement.classList.add("show");
-                        } else {
-                            alleluiaElement.classList.remove("show");
-                        }
-                    }
-
-                    // Cập nhật nội dung cho Tin Mừng
-                    const gospelElement = document.getElementById("gospel01");
-                    if (gospelElement) {
-                        gospelElement.innerHTML = formatReadingPart('Tin Mừng', reading.gospel);
-                        gospelElement.classList.add("show");
-                    }
-                }
-
-
-  
+// Các Hàm liên quan bài đọc chính
+function showReadingContent(dateString) {
+    const date = new Date(dateString);  // Chuyển đổi chuỗi thành đối tượng Date
+    const reading = getBibleByFourDigitCode(date);  // Lấy bài đọc
+    const year = date.getFullYear();
+    const feasts = calculateFeasts(year); // Lấy danh sách lễ
+    updateModalTitle(date, feasts); // Cập nhật tiêu đề modal
+    if (reading) {
+        // Biến lưu trữ nội dung bài đọc với các điều kiện kiểm tra từng phần
+        const readingContent = `
+            ${formatReadingPart('Bài Đọc I', reading.firstReading)}
+            ${formatPsalms(reading.psalms)}
+            ${reading.secondReading ? formatReadingPart('Bài Đọc II', reading.secondReading) : ''} 
+            ${formatAlleluia(reading.alleluia)}
+            ${formatReadingPart('Tin Mừng', reading.gospel)}
+            `;
+                if (reading) {
+            // Cập nhật nội dung cho Bài Đọc I
+            const reading01Element = document.getElementById("reading01");
+            if (reading01Element) {
+                reading01Element.innerHTML = formatReadingPart('Bài Đọc I', reading.firstReading);
+                reading01Element.classList.add("show"); // Hiển thị Bài Đọc I khi có nội dung
             }
 
-            // Hiển thị modal và overlay
-            document.getElementById("readingModal").style.display = "block"; 
-            document.getElementById("modalOverlay").style.display = "block"; 
+            // Cập nhật nội dung cho Thánh Vịnh nếu có
+            const psalmElement = document.getElementById("psalm01");
+            if (psalmElement) {
+                psalmElement.innerHTML = formatPsalms(reading.psalms);
+                if (reading.psalms) {
+                    psalmElement.classList.add("show");
+                } else {
+                    psalmElement.classList.remove("show");
+                }
+            }
+
+            // Cập nhật nội dung cho Bài Đọc II nếu có
+            const reading02Element = document.getElementById("reading02");
+            if (reading02Element) {
+                reading02Element.innerHTML = reading.secondReading ? formatReadingPart('Bài Đọc II', reading.secondReading) : "";
+                if (reading.secondReading) {
+                    reading02Element.classList.add("show");
+                } else {
+                    reading02Element.classList.remove("show");
+                }
+            }
+
+            // Cập nhật nội dung cho Alleluia nếu có
+            const alleluiaElement = document.getElementById("alleluia01");
+            if (alleluiaElement) {
+                alleluiaElement.innerHTML = reading.alleluia ? formatAlleluia(reading.alleluia) : "";
+                if (reading.alleluia) {
+                    alleluiaElement.classList.add("show");
+                } else {
+                    alleluiaElement.classList.remove("show");
+                }
+            }
+
+            // Cập nhật nội dung cho Tin Mừng
+            const gospelElement = document.getElementById("gospel01");
+            if (gospelElement) {
+                gospelElement.innerHTML = formatReadingPart('Tin Mừng', reading.gospel);
+                gospelElement.classList.add("show");
+            }
         }
 
 
 
-        // Hàm hiển thị tên bài đọc chính
-        function showfordayContent(date) {
-            const reading = getBibleByFourDigitCode(date); // Gọi hàm để lấy bài đọc
-            if (reading) {
-                // Loại bỏ (Năm I) hoặc (Năm II) bất kể chữ hoa hay chữ thường
-                const reading1 = reading.firstReading ? `${reading.firstReading.excerpt.replace(/\(năm i\)|\(năm ii\)/gi, '').trim()}; ` : 'Không có Bài Đọc I';
-                const psalm = reading.psalms ? `${reading.psalms.excerpt}; ` : 'Không có Thánh Vịnh';
-                const reading2 = reading.secondReading ? `${reading.secondReading.excerpt}; ` : '';
-                const gospel = reading.gospel ? `${reading.gospel.excerpt}` : 'Không có Tin Mừng';
-
-                // Kết hợp tất cả các phần vào một chuỗi
-                const readingContent = `${reading1}${psalm}${reading2}${gospel}`;
-
-
-                // Trả về chuỗi nội dung bài đọc
-                return readingContent;
-            } else {
-                return; // Trả về chuỗi thông báo
-        }
     }
+
+    // Hiển thị modal và overlay
+    document.getElementById("readingModal").style.display = "block"; 
+    document.getElementById("modalOverlay").style.display = "block"; 
+}
+
+
+
+// Hàm hiển thị tên bài đọc chính
+function showfordayContent(date) {
+    const reading = getBibleByFourDigitCode(date); // Gọi hàm để lấy bài đọc
+    if (reading) {
+        // Loại bỏ (Năm I) hoặc (Năm II) bất kể chữ hoa hay chữ thường
+        const reading1 = reading.firstReading ? `${reading.firstReading.excerpt.replace(/\(năm i\)|\(năm ii\)/gi, '').trim()}; ` : 'Không có Bài Đọc I';
+        const psalm = reading.psalms ? `${reading.psalms.excerpt}; ` : 'Không có Thánh Vịnh';
+        const reading2 = reading.secondReading ? `${reading.secondReading.excerpt}; ` : '';
+        const gospel = reading.gospel ? `${reading.gospel.excerpt}` : 'Không có Tin Mừng';
+
+        // Kết hợp tất cả các phần vào một chuỗi
+        const readingContent = `${reading1}${psalm}${reading2}${gospel}`;
+       // const readingContent = `${reading1}${reading2}${gospel}`;
+
+        // Trả về chuỗi nội dung bài đọc
+        return readingContent;
+    } else {
+        return; // Trả về chuỗi thông báo
+    }
+}
   
-  // Các hàm liên quan bài đọc phụ
  // câu thánh kinh info cho ngày hiển thị
             function showBibleOptionContentinfo(date) {
                 const reading = getBibleByOptionDigitCode(date); // Gọi hàm để lấy bài đọc
@@ -1300,7 +1305,8 @@ function isSameDay(date1, date2) {
                     const gospel = reading.gospel ? `${reading.gospel.excerpt}` : '';
 
                     // Kết hợp tất cả các phần vào một chuỗi
-                    const readingContent = `${reading1}${psalm}${reading2}${gospel}`;
+                    //const readingContent = `${reading1}${psalm}${reading2}${gospel}`;
+                    const readingContent = `${reading1}${reading2}<strong>${gospel}</strong>`;
                      return readingContent;
                 } else {
                     return '';

@@ -14,16 +14,12 @@
         // Chúa nhật thứ 1 của tháng 10
         let BfirstSunday = parseDate(getFirstSundayOfOctober(year));
 
+        let EndSunday = parseDate(getEndSundayOfYear(year));
+
         // Tính các ngày lễ vọng
         secondFeasts.push({ name: 'Bắt đầu tuần cầu nguyện cho các kitô hữu hợp nhất.', date: new Date(year, 0, 18) });
         secondFeasts.push({ name: 'Kết thúc tuần cầu nguyện cho các kitô hữu hợp nhất.', date: new Date(year, 0, 25) });
-        secondFeasts.push({ name: 'Bổn mạng Đức Giám mục Giáo Phận.', date: new Date(year, 7, 8) });
-        secondFeasts.push({ name: 'Ngày thụ phong Giám mục của Đức Giám mục Giáo Phận. (2017)', date: new Date(year, 4, 31) });
-        secondFeasts.push({ name: 'Ngày giỗ Đức Cố Giám mục Bartôlômêô (+2003)', date: new Date(year, 5, 9) });
-        secondFeasts.push({ name: 'Ngày giỗ Đức Cố Giám mục Simon Hòa (+1973)', date: new Date(year, 8, 5) });
-        secondFeasts.push({ name: 'Ngày Đức Cha Antôn nghỉ hưu (2019)', date: new Date(year, 8, 14) });
-        secondFeasts.push({ name: 'Ngày thụ phong Giám mục của Đức Cha Antôn (2003)', date: new Date(year, 9, 1) });
-        secondFeasts.push({ name: 'Kỷ niệm ngày thiết lập Giáo phận (24 và 27.11.1960)', date: new Date(year, 10, 24) });
+
 
         secondFeasts.push({ name: 'Chiều: LỄ VỌNG CHÚA THĂNG THIÊN (Tr). Bài đọc như lễ Chính ngày', date: new Date(easterDate.getTime() + 41 * 24 * 60 * 60 * 1000) });
         secondFeasts.push({ name: 'Chiều: LỄ VỌNG CHÚA THÁNH THẦN HIỆN XUỐNG (Đ).', date: new Date(easterDate.getTime() + 48 * 24 * 60 * 60 * 1000) });
@@ -46,9 +42,9 @@
         const sacredHeartDate = new Date(easterDate.getTime() + 68 * 24 * 60 * 60 * 1000); // Ngày lễ Thánh Tâm
         const june24Date = new Date(year, 5, 24); // Ngày 24/6
         if (june24Date.getTime() === sacredHeartDate.getTime()) {
-            secondFeasts.push({ name: 'VỌNG THÁNH GIOAN BAOTIXITA', date: new Date(year, 5, 22) });
+            secondFeasts.push({ name: 'Chiều: LỄ VỌNG THÁNH GIOAN BAOTIXITA', date: new Date(year, 5, 22) });
         } else {
-            secondFeasts.push({ name: 'VỌNG THÁNH GIOAN BAOTIXITA', date: new Date(year, 5, 23) });
+            secondFeasts.push({ name: 'Chiều: LỄ VỌNG THÁNH GIOAN BAOTIXITA', date: new Date(year, 5, 23) });
         }
 
         return secondFeasts;
@@ -68,6 +64,22 @@
         }
         
         return firstSundayOfOctober;
+    }
+    function getEndSundayOfYear(year) {
+        // Ngày đầu tiên của tháng 12
+        let lastDayOfYear = new Date(year, 11, 31); // 31 tháng 12 của năm
+    
+        // Kiểm tra nếu là ngày 25/12 thì trả về 30/12
+        if (lastDayOfYear.getDate() === 25 && lastDayOfYear.getMonth() === 11) {
+            return new Date(year, 11, 30); // Trả về 30/12
+        }
+    
+        // Tìm ngày Chủ Nhật gần nhất về trước hoặc trùng với 31 tháng 12
+        while (lastDayOfYear.getDay() !== 0) { // getDay() === 0 nghĩa là Chủ Nhật
+            lastDayOfYear.setDate(lastDayOfYear.getDate() - 1);
+        }
+    
+        return lastDayOfYear;
     }
 
     // Đưa hàm calculateSecondFeasts ra ngoài phạm vi toàn cục

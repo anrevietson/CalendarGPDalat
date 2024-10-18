@@ -909,6 +909,42 @@ window.SaintsBibleReading = {
       "end": "Ðó là lời Chúa"
     }
   },
+  "71312": {
+    "firstReading": {
+      "excerpt": "Ed 47, 1-2. 8-9. 12",
+      "info": "“Tôi đã thấy nước từ bên phải đền thờ chảy ra, và nước ấy chảy đến ai, thì tất cả đều được cứu rỗi”.",
+      "title": "Trích sách Tiên tri Êdêkiel.",
+      "content": "Trong những ngày ấy, thiên thần dẫn tôi đến cửa nhà Chúa, và đây nước chảy dưới thềm nhà phía hướng đông, vì mặt tiền nhà Chúa hướng về phía đông, còn nước thì chảy từ bên phải đền thờ, về phía nam bàn thờ. Thiên thần dẫn tôi qua cửa phía bắc, đưa đi phía ngoài, đến cửa ngoài nhìn về hướng đông, và đây nước chảy từ bên phải. Người ấy lại nói với tôi: “Nước này chảy về phía cồn cát, phía đông, chảy xuống đồng bằng hoang địa, rồi chảy ra biển, biến mất trong biển và trở nên nước trong sạch. Tất cả những sinh vật sống động, nhờ suối nước chảy qua, đều được sống. Sẽ có rất nhiều cá và nơi nào nước này chảy đến, nơi đó sẽ trở nên trong lành, và sự sống sẽ được phát triển ở nơi mà suối nước chảy đến. Gần suối nước, hai bên bờ ở mỗi phía, mọi thứ cây ăn trái sẽ mọc lên; lá của nó sẽ không khô héo, và trái của nó sẽ không bao giờ hết; mỗi tháng nó có trái mới, vì dòng nước này phát xuất từ đền thờ; trái của nó dùng làm thức ăn, và lá của nó dùng làm thuốc uống.",
+      "end": "Ðó là lời Chúa"
+    },
+    "psalms": {
+      "excerpt": "Tv 45, 2-3. 5-6. 8-9",
+      "response": "Ðáp: Nước dòng sông làm cho thành Chúa vui mừng, làm hân hoan cung thánh Ðấng Tối Cao",
+      "verses": [
+        "Xướng: Chúa là nơi ẩn náu và là sức mạnh của chúng ta, Người hằng cứu giúp khi ta sầu khổ. Dầu đất có rung chuyển, ta không sợ chi, dầu núi đổ xuống đầy lòng biển cả.",
+        "Xướng: Nước dòng sông làm cho thành Chúa vui mừng, làm hân hoan cung thánh Ðấng Tối Cao hiển ngự. Chúa ở giữa thành, nên nó không chuyển rung, lúc tinh sương, thành được Chúa cứu giúp.",
+        "Xướng: Chúa thiên binh hằng ở cùng ta, ta được Chúa Giacóp hằng bảo vệ. Các ngươi hãy đến mà xem mọi kỳ công Chúa làm, Người thực hiện muôn kỳ quan trên vũ trụ."
+      ]
+    },
+    "secondReading": {
+      "excerpt": "1 Cr 3, 9b-11.16-17",
+      "info": "“Anh em là đền thờ của Thiên Chúa”.",
+      "title": "Trích thư thứ nhất của Thánh Phaolô Tông đồ gửi tín hữu Côrintô.",
+      "content": "Anh em thân mến, anh em là toà nhà của Thiên Chúa. Theo ân sủng Thiên Chúa đã ban cho tôi, tôi như một kiến trúc sư lành nghề, đã đặt nền móng, còn kẻ khác thì xây lên. Nhưng mỗi người hãy xem coi mình xây lên thế nào? Vì chưng không ai có thể xây dựng một nền tảng khác, ngoài nền tảng đã được xây dựng là Ðức Kitô.\rAnh em không biết anh em là đền thờ của Thiên Chúa và Thánh Thần Thiên Chúa ngự trong anh em sao? Nếu ai xúc phạm tới đền thờ của Thiên Chúa, thì Thiên Chúa sẽ huỷ diệt người ấy. Vì đền thờ của Thiên Chúa là thánh mà chính anh em là đền thờ ấy.",
+      "end": "Ðó là lời Chúa"
+    },
+    "alleluia": {
+      "verse": "2 Sb 7, 16",
+      "content": "alleluia! – Chúa phán: “Ta đã chọn lựa và thánh hoá nơi này, để danh Ta được hiện diện khắp nơi cho đến muôn đời. – Alleluia."
+    },
+    "gospel": {
+      "excerpt": "Ga 2, 13-22",
+      "info": "“Người có ý nói đền thờ là thân thể Người”.",
+      "title": "Tin Mừng Chúa Giêsu Kitô theo Thánh Gioan.",
+      "content": "Lễ Vượt Qua của dân Do-thái gần đến, Chúa Giêsu lên Giêrusa-lem; Người thấy ở trong đền thờ có những người bán bò, chiên, chim câu và cả những người ngồi đổi tiền bạc. Người chắp dây thừng làm roi, đánh đuổi tất cả bọn cùng với chiên bò ra khỏi đền thờ, Người hất tung tiền của những người đổi bạc, xô đổ bàn ghế của họ, và bảo những người bán chim câu rằng: “Hãy đem những thứ này đi khỏi đây, và đừng làm nhà Cha Ta thành nơi buôn bán”.\rMôn đệ liền nhớ lại câu Kinh Thánh: “Sự nhiệt thành vì nhà Chúa sẽ thiêu đốt tôi”.\rBấy giờ người Do-thái bảo Người rằng: “Ông hãy tỏ cho chúng tôi thấy dấu gì là ông có quyền làm như vậy”. Chúa Giêsu trả lời: “Các ông cứ phá huỷ đền thờ này đi, nội trong ba ngày Ta sẽ dựng lại”. Người Do-thái đáp lại: “Phải bốn muơi sáu năm mới xây được đền thờ này mà ông, ông sẽ dựng lại trong ba ngày ư?” Nhưng Người, Người có ý nói đền thờ là thân thể Người. Vì thế, khi Chúa Giêsu từ cõi chết sống lại, các môn đệ mới nhớ lời đó, nên đã tin Kinh Thánh và tin lời Người đã nói.",
+      "end": "Ðó là lời Chúa"
+    }
+  },
   "72404": {
     "firstReading": {
       "excerpt": "Cv 7, 44-50",

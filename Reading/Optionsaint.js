@@ -831,6 +831,42 @@ window.OptionsaintReadings = {
         "content": "Khi ấy, các môn đệ đến bên Chúa Giêsu mà hỏi rằng: “Thưa Thầy, ai là kẻ lớn nhất trong Nước Trời?” Chúa Giêsu gọi một trẻ nhỏ lại, đặt nó giữa các ông mà phán rằng: “Thật, Thầy bảo thật các con: nếu các con không hoá nên như trẻ nhỏ, các con sẽ không được vào Nước Trời. Vậy ai hạ mình xuống như trẻ nhỏ này, người ấy là kẻ lớn nhất trong Nước Trời. Và kẻ nào đón nhận một trẻ nhỏ như thế này vì danh Thầy, tức là đón nhận Thầy. Các con hãy coi chừng, đừng khinh rẻ một ai trong những kẻ bé mọn này, vì Thầy bảo các con, thiên thần của chúng trên trời hằng chiêm ngưỡng thánh nhan Cha Thầy, Ðấng ngự trên trời”.",
         "end": "Ðó là lời Chúa"
       }
+    },
+  "81305": {
+    "firstReading": {
+      "excerpt": "Is 61, 9-11",
+      "info": "“Tôi hớn hở vui mừng trong Chúa”.",
+      "title": "Trích sách tiên tri Isaia.",
+      "content": "Dòng dõi chúng sẽ được nổi danh giữa các dân tộc; miêu duệ chúng sẽ được biết đến giữa chư dân. Tất cả những ai thấy họ, đều nhận biết họ là dòng dõi được Chúa chúc phúc. Tôi hớn hở vui mừng trong Chúa, và lòng tôi hoan hỉ trong Chúa tôi, vì Người đã mặc cho tôi áo phần rỗi và choàng áo công chính cho tôi, như tân lang đầu đội triều thiên, như tân nương trang sức bằng ngọc bảo. Như đất đâm chồi, như vườn nảy lộc, Chúa cũng làm phát sinh công chính và lời ca tụng trước mặt muôn dân.",
+      "end": "Ðó là lời Chúa"
+    },
+    "psalms": {
+      "excerpt": "Tv 44, 10bc. 11. 12ab. 16",
+      "response": "Đáp: Xin hãy nghe, thưa nương tử, hãy coi và hãy lắng tai.",
+      "verses": [
+        "Xướng: Hoàng hậu đứng bên hữu đức vua, mặc đồ trang điểm vàng ròng lộng lẫy.",
+        "Xướng: Xin hãy nghe, thưa nương tử, hãy coi và hãy lắng tai, hãy quên dân tộc và nhà thân phụ.",
+        "Xướng: Để Đức Vua Người sủng ái dung nhan: chính Người là Chúa của cô nương, hãy phục vụ Người.",   
+        "Xướng: Họ bước đi trong niềm hân hoan vui vẻ, tiến vào trong cung điện Đức Vua."
+      ]
+    },
+    "secondReading": {
+      "excerpt": "Cv 1, 12–14",
+      "info": "“Họ kiên trì cầu nguyện cùng Bà Maria, Mẹ Chúa Giêsu”.",
+      "title": "Trích sách Tông Đồ Công Vụ.",
+      "content": "(Sau khi Chúa Giêsu lên trời), các Tông đồ xuống khỏi núi gọi là Núi Cây Dầu mà trở về Giêrusalem, núi này ở gần Giêrusalem, bằng quãng đường (được đi trong) ngày Sabbat. Và khi đã trở vào thành, các ông lên lầu gác, nơi Phêrô và Gioan, Anrê và Philipphê, Giacôbê con ông Alphê và Simon Giêlôtê, và Giuđa con ông Giacôbê, trú ngụ. \r Mọi người đều đồng tâm kiên trì cầu nguyện, cùng với mấy người phụ nữ, và Bà Maria mẹ Chúa Giêsu, với các anh em Người. ",
+      "end": "Ðó là lời Chúa"
+    },
+    "alleluia": {
+      "verse": "x. Lc 2,19",
+      "content": "Alleluia, alleluia! - Đức Thánh Trinh nữ Maria ghi nhớ lời Chúa và suy niệm trong lòng. - Alleluia."
+    },
+    "gospel": {
+      "excerpt": "Lc 11, 27–28",
+      "info": "“Phúc cho dạ đã cưu mang Thầy”.",
+      "title": "Tin Mừng Chúa Giêsu Ki tô theo thánh Luca.",
+      "content": "Khi ấy, Chúa Giêsu đang giảng cho dân chúng, thì từ giữa đám dân chúng, có một phụ nữ cất tiếng nói rằng: “Phúc cho dạ đã cưu mang Thầy và vú đã cho Thầy bú!” Nhưng Người phán rằng: “Những ai nghe và giữ lời Thiên Chúa thì có phúc hơn”.",
+      "end": "Ðó là lời Chúa"
     }
-  
+  }
 };
