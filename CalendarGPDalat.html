@@ -241,8 +241,14 @@
 </html>
 
 <script>
-    document.getElementById('embedded-page').onload = function() {
-    // Kiểm tra nếu iframe không hoạt động hoặc hiển thị thông báo lỗi.
+    
+window.onload = function() {
+    // Ghi đè hàm showSuccess để không làm gì
+    if (window.BootstrapDialog) {
+        BootstrapDialog.showSuccess = function() {
+            // Không làm gì cả - bỏ qua thông báo
+        };
+    }
 };
 
 document.getElementById('embedded-page').onerror = function() {
