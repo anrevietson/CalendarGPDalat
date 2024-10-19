@@ -29,8 +29,6 @@
         }
 
         let weekKey = weekNumber.toString().padStart(2, '0');  // Chuyển tuần thành chuỗi có 2 chữ số
-        console.log("Tuần:", weekKey);  // Kiểm tra xem tuần tính ra là bao nhiêu
-
         if (window.eucharisticAdoration[weekKey]) {
             return window.eucharisticAdoration[weekKey].content;
         } else {
