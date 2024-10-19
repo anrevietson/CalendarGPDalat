@@ -242,25 +242,6 @@
 
 <script>
     
-(function() {
-    'use strict';
-
-    // Ghi đè các hàm kiểm tra thiết bị và hiển thị thông báo
-    window.checkiOSAvailable = function() { 
-        return false;  // Chặn kiểm tra iOS, luôn trả về false để tránh nhận diện thiết bị iOS
-    };
-
-    window.getAndroidVersion = function() { 
-        return false;  // Chặn kiểm tra Android, luôn trả về false để tránh nhận diện thiết bị Android
-    };
-
-    BootstrapDialog.showSuccess = function() {
-        // Không làm gì cả, ngăn việc hiển thị modal thông báo thành công
-        // Các modal được hiển thị qua BootstrapDialog.showSuccess sẽ không xuất hiện nữa.
-    };
-})();
-
-
 document.getElementById('embedded-page').onerror = function() {
     // Tắt thông báo hoặc hiển thị thông báo tùy chỉnh.
 };
