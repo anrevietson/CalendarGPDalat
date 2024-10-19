@@ -241,6 +241,13 @@
 </html>
 
 <script>
+    document.getElementById('embedded-page').onload = function() {
+    // Kiểm tra nếu iframe không hoạt động hoặc hiển thị thông báo lỗi.
+};
+
+document.getElementById('embedded-page').onerror = function() {
+    // Tắt thông báo hoặc hiển thị thông báo tùy chỉnh.
+};
        function removeHeader() {
     try {
       // Chỉ thực hiện nếu trang iframe cùng miền
