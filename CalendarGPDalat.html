@@ -31,6 +31,7 @@
     <script src="js/secondfeast.js"></script>
     <script src="js/calculateOptionbibleReads.js"></script>
     <script src="js/calculateEucharisticAdoration.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -116,11 +117,14 @@
 <footer id="mobile-footer" class="mobile-footer">
     <div class="controls-container">
         <div class="mobile-controls">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="icon-button" onclick="toggleDatePicker()">📅</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button onclick="displayWeekInfo('previous')">⏮</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button onclick="displayWeekInfo('current')">🧭</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button onclick="displayWeekInfo('next')">⏭</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="icon-button" onclick="toggleDatePicker()">📅</button>&nbsp;
+            <button onclick="displayWeekInfo('previous')">⏮</button>
+            <button onclick="displayWeekInfo('current')">🧭</button>
+            <button onclick="displayWeekInfo('next')">⏭</button>&nbsp;&nbsp;&nbsp;
             <button class="icon-button" onclick="toggleMonthPicker()">🗓</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- Nút để mở modal hiển thị trang web -->
+            <button class="icon-button" data-bs-toggle="modal" data-bs-target="#webModal"> ✝️</button>
         </div>
     </div>
 </footer>
@@ -225,6 +229,20 @@
 </html>
 
 <script>
+       function removeHeader() {
+    try {
+      // Chỉ thực hiện nếu trang iframe cùng miền
+      const iframe = document.getElementById('custom-embedded-page');
+      const iframeDocument = iframe.contentWindow.document;
+      const header = iframeDocument.querySelector('header');
+
+      if (header) {
+        header.style.display = 'none'; // Ẩn phần header
+      }
+    } catch (e) {
+      console.error('Không thể truy cập nội dung iframe do khác miền (Cross-Origin)');
+    }
+  }
         let lastScrollY = window.scrollY;
     const footer = document.getElementById('mobile-footer');
 
