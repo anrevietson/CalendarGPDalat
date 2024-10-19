@@ -539,5 +539,9 @@ button:hover {
     /* padding: 1rem;*/
     background-color: #f8f9fa; /* Màu nền tùy chỉnh */
   }
+    iframe {
+    /* Apply any CSS necessary to hide potential elements */
+    display: none; /* Only for illustrative purposes */
+}
 }
 
