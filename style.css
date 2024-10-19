@@ -539,9 +539,7 @@ button:hover {
     /* padding: 1rem;*/
     background-color: #f8f9fa; /* Màu nền tùy chỉnh */
   }
-    .modal-dialog, .modal-backdrop {
-    display: none !important; /* Ẩn tất cả modal */
-}
+
 
 }
 
