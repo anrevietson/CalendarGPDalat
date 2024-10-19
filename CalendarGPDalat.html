@@ -243,10 +243,22 @@
 <script>
     
 window.onload = function() {
-    // Ghi đè hàm showSuccess để không làm gì
+    // Kiểm tra xem BootstrapDialog có tồn tại không
     if (window.BootstrapDialog) {
-        BootstrapDialog.showSuccess = function() {
-            // Không làm gì cả - bỏ qua thông báo
+        // Lưu lại hàm gốc showSuccess
+        const originalShowSuccess = BootstrapDialog.showSuccess;
+
+        // Ghi đè lại showSuccess
+        BootstrapDialog.showSuccess = function(message) {
+            // Kiểm tra nếu thông báo chứa liên kết hoặc nội dung không mong muốn
+            if (message.includes("itunes.apple.com") || message.includes("play.google.com")) {
+                // Nếu phát hiện thông báo về thiết bị không phù hợp, chặn nó
+                console.log("Thông báo về thiết bị đã bị chặn.");
+                return; // Không làm gì cả, chặn thông báo
+            } else {
+                // Nếu không phải thông báo liên quan đến iOS/Android, vẫn hiển thị modal
+                originalShowSuccess(message);
+            }
         };
     }
 };
