@@ -31,6 +31,7 @@
     <script src="js/secondfeast.js"></script>
     <script src="js/calculateOptionbibleReads.js"></script>
     <script src="js/calculateEucharisticAdoration.js"></script>
+    <script src="js/Optionfeast.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
@@ -784,13 +785,20 @@ function displayWeekInfo(weekType) {
     
         }
         }
-                        //console.log("ngày truyền vào:", currentDate);  // Kiểm tra currentDate có hợp lệ không
-                        feastAndReadingContent += `
-                                <div class="EucharisticAdoration">
-                                    ${window.calculateEucharisticAdoration.getEucharisticAdorationContent(currentDay)}
-                                </div>
-                            `;
-     
+
+            //Những ngày lễ riêng
+            const optionFeasts = calculateOptionFeasts(currentDay);
+                feastAndReadingContent += `
+                    <div class="Optionfeats">
+                        ${optionFeasts.map(feast => `${feast.name}`).join('')}
+                    </div>
+                `;
+        feastAndReadingContent += `
+                <div class="EucharisticAdoration">
+                    ${window.calculateEucharisticAdoration.getEucharisticAdorationContent(currentDay)}
+                </div>
+            `;
+
 
 
         // Tạo hàng mới trong bảng
@@ -981,8 +989,13 @@ yearDisplayElement.textContent = `Tháng ${month} - Năm ${year} : (${liturgical
                     `;
                 }
             }
-            
-            //console.log("ngày truyền vào:", currentDate);  // Kiểm tra currentDate có hợp lệ không
+               //Những ngày lễ riêng
+            const optionFeasts = calculateOptionFeasts(currentDate);
+                feastAndReadingContent += `
+                    <div class="Optionfeats">
+                        ${optionFeasts.map(feast => `${feast.name}`).join('')}
+                    </div>
+                `;
             feastAndReadingContent += `
                 <div class="EucharisticAdoration">
                     ${window.calculateEucharisticAdoration.getEucharisticAdorationContent(currentDate)}
