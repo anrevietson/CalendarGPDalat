@@ -17,14 +17,7 @@
         // Tính các ngày lễ vọng
         secondFeasts.push({ name: 'Bắt đầu tuần cầu nguyện cho các kitô hữu hợp nhất.', date: new Date(year, 0, 18) });
         secondFeasts.push({ name: 'Kết thúc tuần cầu nguyện cho các kitô hữu hợp nhất.', date: new Date(year, 0, 25) });
-        secondFeasts.push({ name: 'Bổn mạng Đức Giám mục Giáo Phận.', date: new Date(year, 7, 8) });
-        secondFeasts.push({ name: 'Ngày thụ phong Giám mục của Đức Giám mục Giáo Phận. (2017)', date: new Date(year, 4, 31) });
-        secondFeasts.push({ name: 'Ngày giỗ Đức Cố Giám mục Bartôlômêô (+2003)', date: new Date(year, 5, 9) });
-        secondFeasts.push({ name: 'Ngày giỗ Đức Cố Giám mục Simon Hòa (+1973)', date: new Date(year, 8, 5) });
-        secondFeasts.push({ name: 'Ngày Đức Cha Antôn nghỉ hưu (2019)', date: new Date(year, 8, 14) });
-        secondFeasts.push({ name: 'Ngày thụ phong Giám mục của Đức Cha Antôn (2003)', date: new Date(year, 9, 1) });
-        secondFeasts.push({ name: 'Kỷ niệm ngày thiết lập Giáo phận (24 và 27.11.1960)', date: new Date(year, 10, 24) });
-
+     
         secondFeasts.push({ name: 'Chiều: LỄ VỌNG CHÚA THĂNG THIÊN (Tr). Bài đọc như lễ Chính ngày', date: new Date(easterDate.getTime() + 41 * 24 * 60 * 60 * 1000) });
         secondFeasts.push({ name: 'Chiều: LỄ VỌNG CHÚA THÁNH THẦN HIỆN XUỐNG (Đ).', date: new Date(easterDate.getTime() + 48 * 24 * 60 * 60 * 1000) });
         secondFeasts.push({ name: 'Chiều: LỄ VỌNG THÁNH PHÊRÔ VÀ PHAOLÔ TỒNG ĐỒ (Đ).', date: new Date(year, 5, 28) });
