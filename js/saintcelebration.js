@@ -125,7 +125,8 @@ window.celebrations = [
         { date: '27/08', type: 'M', feast: 'Thánh Monica.', chasuble: 'Tr' },
         { date: '28/08', type: 'M', feast: 'Thánh Augustinô, giám mục, tiến sĩ Hội Thánh.', chasuble: 'Tr' },
         { date: '29/08', type: 'M', feast: 'Thánh Gioan Tẩy Giả bị trảm quyết.', chasuble: 'Đ' },
-
+	
+        { date: '01/09', type: 'O', feast: 'CẦU CHO VIỆC BẢO VỆ CÔNG TRÌNH TẠO DỰNG' },
         { date: '02/09', type: 'O', feast: 'Ngày Quốc Khánh. Cầu bình an cho Tổ Quốc.' },
         { date: '03/09', type: 'M', feast: 'Thánh Grêgôriô Cả, giáo hoàng, tiến sĩ Hội Thánh.', chasuble: 'Tr' },
         { date: '05/09', type: 'O', feast: 'Thánh Têrêsa Calcutta, nữ tu (Tr).' },
